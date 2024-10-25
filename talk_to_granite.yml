@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: Send POST request using uri module
+      ansible.builtin.uri:
+        url: "http://98.80.168.118:8000/v1/completions"
+        method: POST
+        headers:
+          accept: "application/json"
+          Content-Type: "application/json"
+        body: >
+          {
+            "prompt": "\n\n### Instructions:\nWhat is the capital of USA?\n\n### Response:\n",
+            "stop": [
+              "\n",
+              "###"
+            ]
+          }
+        body_format: json
+        return_content: yes
+        status_code: 200
+        timeout: 60
+      register: response
+
+    - name: Debug the output
+      ansible.builtin.debug:
+        msg: "{{ response.json }}"
