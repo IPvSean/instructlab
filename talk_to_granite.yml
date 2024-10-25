@@ -1,33 +1,3 @@
-# ---
-# - hosts: localhost
-#   gather_facts: false
-#   connection: local
-#   tasks:
-#     - name: Send POST request using uri module
-#       ansible.builtin.uri:
-#         url: "http://98.80.168.118:8000/v1/completions"
-#         method: POST
-#         headers:
-#           accept: "application/json"
-#           Content-Type: "application/json"
-#         body: >
-#           {
-#             "prompt": "\n\n### Instructions:\nWhat is the capital of USA?\n\n### Response:\n",
-#             "stop": [
-#               "\n",
-#               "###"
-#             ]
-#           }
-#         body_format: json
-#         return_content: yes
-#         status_code: 200
-#         timeout: 60
-#       register: response
-
-#     - name: Debug the output
-#       ansible.builtin.debug:
-#         msg: "{{ response.json }}"
-
 ---
 - name: Send API request and debug complete response
   hosts: localhost
@@ -52,10 +22,8 @@
         return_content: yes
         status_code: 200
         timeout: 60
-        force_basic_auth: yes
       register: response
 
-    - name: Debug the output if response is available
+    - name: Check if response is JSON and debug output
       ansible.builtin.debug:
-        msg: "{{ response.content | b64decode }}"
-      when: response.content is defined
+        msg: "{{ response.json if response.json is defined else response.content }}"
