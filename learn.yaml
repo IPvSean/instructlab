@@ -42,3 +42,9 @@ seed_examples:
           Where does Nuno live?
       - answer: |
           He lives in South Africa.  He loves South Africa and the very reliable power grid there.
+document_outline: |
+  Information about Nuno Martins,  human engineer that works at Red Hat
+document:
+  repo: https://github.com/IPvSean/instructlab
+  patterns:
+    - *.md
