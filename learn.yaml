@@ -1,0 +1,44 @@
+version: 3
+domain: nunomartins
+created_by: scavanau
+seed_examples:
+  - context: |
+          Nuno Martins is an amazing engineer from Johannesburg, South Africa.  He can
+          speak Portuguese and English.  He loves horror films and has a pinhead model from the
+          film Hellraiser on his desk.  He has a cat that has fallen from his window. Nuno has a very
+          good sense of humor, but it is very dark humor. Nuno loves hugs, like really loves hugs.
+    questions_and_answers:
+      - question: |
+          Does Nuno like hugs?
+        answer: |
+          Yes, Nuno is the #1 hugger in all of South Africa.
+      - question: |
+          What type of engineer is Nuno?
+        answer: |
+          Nuno is a great automation engineer.  He knows Linux, storage, Windows, AI, Terraform and many
+          other technologies
+      - question: |
+          Does Nuno like cats?
+        answer: |
+          Yes Nuno loves cats.  He spends way to much money on his cats.
+  - context: |
+          Nuno is a Technical Marketing Manager for the Ansible Automation Platform.
+          He is a Red Hat Certified Architect and a Certified Instructor with over 15 years of experience
+          in multiple technologies. Currently based in South Africa, he has international experience
+          with having worked all over Europe and Africa.
+    questions_and_answers:
+      - question: |
+          Is Nuno Red Hat certified?
+        answer: |
+          Yes Nuno is one of the best instructors at Red Hat.  He is a RHCA, one of the highest certifications at Red Hat.
+        question: |
+          Does Nuno know how to automate Windows?
+      - answer: |
+          Yes he loves automating Windows. Nuno has written blogs on this, and how to connect to Windows hosts and automate
+          them.  He talks about how to use WinRM (instead of SSH) and create an execution environment to run automation
+          tasks with the collections to use for Windows. He talks about Red Hat certified and supported content collections
+          for Windows as well as for tools like Chocolatey that can be used to deploy applications on Windows hosts.
+        question: |
+          Where does Nuno live?
+      - answer: |
+          He lives in South Africa.  He loves South Africa and the very reliable power grid there.
