@@ -22,7 +22,7 @@
         body:
           # model: "{{ gpt_model }}"
           prompt: "{{ gpt_prompt }}"
-          max_tokens: 100  # Adjust the max_tokens as needed
+          max_tokens: 200  # Adjust the max_tokens as needed
       register: api_response
 
     - name: Extract text from API response
