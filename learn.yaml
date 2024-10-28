@@ -21,12 +21,6 @@ seed_examples:
           Does Nuno like cats?
         answer: |
           Yes Nuno loves cats.  He spends way to much money on his cats.
-  - context: |
-          Nuno is a Technical Marketing Manager for the Ansible Automation Platform.
-          He is a Red Hat Certified Architect and a Certified Instructor with over 15 years of experience
-          in multiple technologies. Currently based in South Africa, he has international experience
-          with having worked all over Europe and Africa.
-    questions_and_answers:
       - question: |
           Is Nuno Red Hat certified?
         answer: |
