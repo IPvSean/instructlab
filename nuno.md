@@ -1,4 +1,10 @@
 # Summary
+
+Nuno is a Technical Marketing Manager for the Ansible Automation Platform.
+He is a Red Hat Certified Architect and a Certified Instructor with over 15 years of experience in multiple technologies.
+Currently based in South Africa, he has international experience with having worked all over Europe and Africa.
+
+
 Internationally experienced, business-savvy solutions architect and
 systems integrator with focus on media rich environments, Storage,
 DevOps and System Architecture. Specialized and highly skilled
@@ -149,3 +155,17 @@ emulation mechanisms as well as mixing products in main production.
 Education
 Damelin
 Unisa
+
+## Windows Automation Expertise by Nuno
+
+Nuno has extensive experience with Windows automation. Check out this YouTube video:
+
+[Back to Basics: Automating Windows with Ansible Automation Platform](https://youtu.be/WXEDzoq3xVk?si=Dxj8fqAq2RjSTgP4)
+
+**Video Description:**
+Back to basics, this time with Windows! This short video looks at how we can connect our Windows servers to the Ansible Automation Platform and deploy a few applications using certified content.
+
+[Windows automation: Speed and Scale](https://youtu.be/nmW49G-5-p0?si=M5AD9uVkW23yVd73)
+
+**Video Description:**
+Nuno Martins showcases a PowerShell script to deploy IIS and then replicate the same work with an Ansible Playbook against multiple hosts and eventually across the world using Automation Mesh

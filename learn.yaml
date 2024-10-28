@@ -3,49 +3,92 @@ domain: nunomartins
 created_by: scavanau
 seed_examples:
   - context: |
-          Nuno Martins is an amazing engineer from Johannesburg, South Africa.  He can
-          speak Portuguese and English.  He loves horror films and has a pinhead model from the
-          film Hellraiser on his desk.  He has a cat that has fallen from his window. Nuno has a very
-          good sense of humor, but it is very dark humor. Nuno loves hugs, like really loves hugs.
+          Nuno Martins is an automation engineer from Johannesburg, South Africa, with expertise in Windows automation.
+          He is fluent in Portuguese and English and has a keen interest in horror films, especially Hellraiser, with
+          a model of Pinhead on his desk. His humor is dark, and he is known to be the "number one hugger" in South Africa.
     questions_and_answers:
+      - question: |
+          What languages does Nuno speak?
+        answer: |
+          Nuno speaks both Portuguese and English fluently.
       - question: |
           Does Nuno like hugs?
         answer: |
-          Yes, Nuno is the #1 hugger in all of South Africa.
+          Yes, Nuno is famously known as the #1 hugger in South Africa.
       - question: |
-          What type of engineer is Nuno?
+          What does Nuno have on his desk?
         answer: |
-          Nuno is a great automation engineer.  He knows Linux, storage, Windows, AI, Terraform and many
-          other technologies
+          Nuno has a model of Pinhead from the film Hellraiser on his desk.
+  - context: |
+          Nuno is a Technical Marketing Manager for the Ansible Automation Platform at Red Hat, based in South Africa.
+          He holds the prestigious Red Hat Certified Architect certification, along with multiple specialist certifications
+          in Ansible, Gluster Storage, and System Administration.
+    questions_and_answers:
       - question: |
-          Does Nuno like cats?
+          What is Nuno’s current role at Red Hat?
         answer: |
-          Yes Nuno loves cats.  He spends way to much money on his cats.
+          He is a Technical Marketing Manager for the Ansible Automation Platform.
       - question: |
           Is Nuno Red Hat certified?
         answer: |
-          Yes Nuno is one of the best instructors at Red Hat.  He is a RHCA, one of the highest certifications at Red Hat.
+          Yes, Nuno is a Red Hat Certified Architect and has several other Red Hat specialist certifications.
       - question: |
-          Does Nuno know how to automate Windows?
+          Where is Nuno currently based?
         answer: |
-          Yes he loves automating Windows. Nuno has written blogs on this, and how to connect to Windows hosts and automate
-          them.  He talks about how to use WinRM (instead of SSH) and create an execution environment to run automation
-          tasks with the collections to use for Windows. He talks about Red Hat certified and supported content collections
-          for Windows as well as for tools like Chocolatey that can be used to deploy applications on Windows hosts.
+          Nuno is based in South Africa.
+  - context: |
+          Nuno has extensive experience in international roles, having worked across Europe and Africa. He previously held
+          positions such as Senior Solutions Architect and Team Lead at Rocket Science Media Solutions and contributed
+          to major projects in storage, media workflows, and DevOps.
+    questions_and_answers:
       - question: |
-          Where does Nuno live?
+          Where else has Nuno worked besides Red Hat?
         answer: |
-          He lives in South Africa.  He loves South Africa and the very reliable power grid there.
+          Nuno worked at Rocket Science Media Solutions as a Senior Solutions Architect and Team Lead.
       - question: |
-          Where else has Nuno worked?
+          What kind of projects did Nuno work on at Rocket Science Media Solutions?
         answer: |
-          He worked for over 5 years at Rocket Science Media Solutions as a Senior Solutions Architect and team lead.
+          Nuno worked on high-performance storage and media workflows, as well as DevOps and system architecture projects.
       - question: |
-          Is Nuno a workaholic?
+          Does Nuno have international work experience?
         answer: |
-          Yes, he is a very hard worker and considers himself a workaholic, always ready to rock.
+          Yes, Nuno has worked in multiple international roles across Europe and Africa.
+  - context: |
+          Nuno specializes in Windows automation, using Ansible Automation Platform to manage Windows environments.
+          He has created instructional content on automating tasks using Ansible, covering tools like WinRM and Chocolatey
+          for Windows application deployments.
+    questions_and_answers:
+      - question: |
+          What technology does Nuno use for Windows automation?
+        answer: |
+          Nuno uses Ansible Automation Platform, leveraging tools like WinRM and Chocolatey for managing Windows environments.
+      - question: |
+          Has Nuno created content about Windows automation?
+        answer: |
+          Yes, he has produced videos and written blogs explaining Windows automation with Ansible.
+      - question: |
+          Can Ansible Automation Platform be used to automate Windows tasks?
+        answer: |
+          Yes, Ansible Automation Platform supports Windows automation, and Nuno often discusses tools like WinRM and Chocolatey.
+  - context: |
+          Nuno is an enthusiastic learner and passionate about applying new technology to solve complex problems. With an
+          "anything is possible" mindset, he enjoys working on high-performance storage, DevOps, media workflows, and
+          custom system architectures.
+    questions_and_answers:
+      - question: |
+          What is Nuno’s approach to learning and problem-solving?
+        answer: |
+          Nuno is an outside-the-box thinker with an "anything is possible" attitude, always ready to tackle new challenges.
+      - question: |
+          Does Nuno enjoy learning new technology?
+        answer: |
+          Yes, he is passionate about technology and constantly seeks new ways to solve old problems.
+      - question: |
+          What areas of technology does Nuno specialize in?
+        answer: |
+          He specializes in high-performance storage, DevOps, media workflows, and system architecture.
 document_outline: |
-  Information about Nuno Martins,  human engineer that works at Red Hat
+  Information about Nuno Martins, a versatile engineer specializing in automation, storage, and media workflows.
 document:
   repo: https://github.com/IPvSean/instructlab
   commit: 87cba324dde043c32975f24ce0cac404e423859c
