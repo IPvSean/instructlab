@@ -48,6 +48,6 @@ document_outline: |
   Information about Nuno Martins,  human engineer that works at Red Hat
 document:
   repo: https://github.com/IPvSean/instructlab
-  commit: b3bc89d50482c1f0c1971e8d25668f6f68654a80
+  commit: 87cba324dde043c32975f24ce0cac404e423859c
   patterns:
     - nuno.md
