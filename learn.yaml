@@ -91,6 +91,6 @@ document_outline: |
   Information about Nuno Martins, a versatile engineer specializing in automation, storage, and media workflows.
 document:
   repo: https://github.com/IPvSean/instructlab
-  commit: 87cba324dde043c32975f24ce0cac404e423859c
+  commit: 3f693416006c76508dadb78c7c3b9599fccc075d
   patterns:
     - nuno.md
