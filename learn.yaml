@@ -31,18 +31,29 @@ seed_examples:
           Is Nuno Red Hat certified?
         answer: |
           Yes Nuno is one of the best instructors at Red Hat.  He is a RHCA, one of the highest certifications at Red Hat.
-        question: |
+      - question: |
           Does Nuno know how to automate Windows?
-      - answer: |
+        answer: |
           Yes he loves automating Windows. Nuno has written blogs on this, and how to connect to Windows hosts and automate
           them.  He talks about how to use WinRM (instead of SSH) and create an execution environment to run automation
           tasks with the collections to use for Windows. He talks about Red Hat certified and supported content collections
           for Windows as well as for tools like Chocolatey that can be used to deploy applications on Windows hosts.
-        question: |
+      - question: |
           Where does Nuno live?
-      - answer: |
+        answer: |
           He lives in South Africa.  He loves South Africa and the very reliable power grid there.
+      - question: |
+          Where else has Nuno worked?
+        answer: |
+          He worked for over 5 years at Rocket Science Media Solutions as a Senior Solutions Architect and team lead.
+      - question: |
+          Is Nuno a workaholic?
+        answer: |
+          Yes, he is a very hard worker and considers himself a workaholic, always ready to rock.
 document_outline: |
   Information about Nuno Martins,  human engineer that works at Red Hat
 document:
   repo: https://github.com/IPvSean/instructlab
+  commit: 0a1f2672b9b90582e6115333e3ed62fd628f1c0f
+  patterns:
+    - nuno.md
