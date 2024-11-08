@@ -1,0 +1,33 @@
+---
+- name: Setup and run model serve in the background
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Activate virtual environment and run model serve in background
+      ansible.builtin.shell: |
+        source /home/ec2-user/instructlab/venv/bin/activate
+        nohup ilab model serve --model-path models/granite-7b-lab-Q4_K_M.gguf --api-key {{ api_token | default('ansible123!') }} > /tmp/ilab_model_serve.log 2>&1 &
+      args:
+        chdir: /home/ec2-user/instructlab # Ensures the command runs in the correct directory
+      async: 5
+      poll: 0
+      register: model_serve_command
+
+    - name: Check if something is listening on port 8000 for TCP
+      ansible.builtin.wait_for:
+        host: 0.0.0.0
+        port: 8000
+        state: started
+        timeout: 30
+      register: port_check
+      until: port_check is not failed
+
+    - name: Confirm that model serve started successfully
+      ansible.builtin.debug:
+        msg: "Model serve started successfully and is listening on port 8000"
+      when: port_check is succeeded
+
+    - name: Handle error if port 8000 is not listening
+      ansible.builtin.fail:
+        msg: "Model serve did not start successfully; nothing is listening on port 8000"
+      when: port_check is failed

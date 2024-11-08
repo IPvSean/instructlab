@@ -1,7 +1,7 @@
 ---
 - name: Send API request and debug complete response
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   tasks:
     - name: Send POST request using uri module
       ansible.builtin.uri:
@@ -10,6 +10,7 @@
         headers:
           accept: "application/json"
           Content-Type: "application/json"
+          Authorization: "Bearer {{ api_token | default('ansible123!') }}"
         body: >
           {
             "prompt": "\n\n### Instructions:\nWhat is the capital of USA?\n\n### Response:\n",
@@ -19,7 +20,7 @@
             ]
           }
         body_format: json
-        return_content: yes
+        return_content: true
         status_code: 200
         timeout: 60
       register: response
