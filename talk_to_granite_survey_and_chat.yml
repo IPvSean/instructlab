@@ -37,7 +37,7 @@
        url: http://44.209.231.244:8065
        api_key: "{{ api_chat_token }}"
        attachments:
-         - text: "data model "{{ response.json.model | basename if response.json is defined else 'Model not found' }}""
+         - text: "data model {{ response.json.model | basename if response.json is defined else 'Model not found' }}"
            color: '#37a3a3'
            title: Ansible + InstructLab Information
            fields:
