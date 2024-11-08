@@ -34,7 +34,7 @@
 
     - name: Launch a job template with extra_vars on remote controller instance
       ansible.controller.job_launch:
-        job_template: "InstructLab - Talk to Granite Survey and Chat
+        job_template: "InstructLab - Talk to Granite Survey and Chat"
         extra_vars:
           gpt_prompt: "We have an issue on our RHEL Linux server.  Here is the output: {{ httpd_log_output }}"
           max_tokens: "My Second Variable"
