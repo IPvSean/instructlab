@@ -41,7 +41,10 @@
            color: '#37a3a3'
            title: Ansible + InstructLab Information
            fields:
-            - title: data provided by {{ response.json.model | default('unknown') }}
-              value: "{{ response.json.choices[0].text }}"
+            - title: prompt
+              value: "{{ gpt_prompt | default('What is the capital of the USA?') }}"
+              short: true
+            - title: data model "{{ response.json.model | basename if response.json is defined else 'Model not found' }}"
+              value: "{{ response.json.choices[0].text if response.json is defined and response.json.choices is defined else 'Text not found' }}"
               short: true
       delegate_to: localhost
