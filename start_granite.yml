@@ -10,7 +10,7 @@
             host: 0.0.0.0
             port: 8000
             state: started
-            timeout: 30
+            timeout: 5
           register: port_check
           until: port_check is not failed
 
