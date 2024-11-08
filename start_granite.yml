@@ -12,7 +12,6 @@
             state: started
             timeout: 5
           register: port_check
-          until: port_check is not failed
 
       rescue:
         - name: Activate virtual environment and run model serve in background
