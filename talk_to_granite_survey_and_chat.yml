@@ -1,0 +1,47 @@
+---
+- name: Send API request and debug complete response
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Send POST request using uri module
+      ansible.builtin.uri:
+        url: "http://98.80.168.118:8000/v1/completions"
+        method: POST
+        headers:
+          accept: "application/json"
+          Content-Type: "application/json"
+          Authorization: "Bearer {{ api_token | default('ansible123!') }}"
+        body:
+          prompt: "{{ gpt_prompt | default('What is the capital of the USA?') }}"
+          max_tokens: "{{ max_tokens | default('200') }}"
+        body_format: json
+        return_content: true
+        status_code: 200
+        timeout: 60
+      register: response
+
+    - name: Check if response is JSON and debug output
+      ansible.builtin.debug:
+        msg: "{{ response.json if response.json is defined else response.content }}"
+
+    - name: Check if response is JSON and retrieve model name
+      ansible.builtin.debug:
+        msg: "{{ response.json.model | basename if response.json is defined else 'Model not found' }}"
+
+    - name: Check if response is JSON and retrieve text about North Carolina
+      ansible.builtin.debug:
+        msg: "{{ response.json.choices[0].text if response.json is defined and response.json.choices is defined else 'Text not found' }}"
+
+    - name: Send notification message via Mattermost
+      community.general.mattermost:
+       url: http://44.209.231.244:8065
+       api_key: "{{ api_token }}"
+       attachments:
+         - text: "-- Information --"
+           color: '#37a3a3'
+           title: Ansible + InstructLab Information
+           fields:
+            - title: data provided by {{ response.json.model | default('unknown') }}
+              value: "{{ response.json.choices[0].text }}"
+              short: true
+      delegate_to: localhost
