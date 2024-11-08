@@ -37,14 +37,14 @@
        url: http://44.209.231.244:8065
        api_key: "{{ api_chat_token }}"
        attachments:
-         - text: "-- Information --"
+         - text: "data model "{{ response.json.model | basename if response.json is defined else 'Model not found' }}""
            color: '#37a3a3'
            title: Ansible + InstructLab Information
            fields:
-            - title: prompt
+            - title: Ansible Prompt
               value: "{{ gpt_prompt | default('What is the capital of the USA?') }}"
               short: true
-            - title: data model "{{ response.json.model | basename if response.json is defined else 'Model not found' }}"
+            - title: InstructLab AI provided information
               value: "{{ response.json.choices[0].text if response.json is defined and response.json.choices is defined else 'Text not found' }}"
               short: true
       delegate_to: localhost
