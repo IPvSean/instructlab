@@ -35,7 +35,7 @@
     - name: Send notification message via Mattermost
       community.general.mattermost:
        url: http://44.209.231.244:8065
-       api_key: "{{ api_token }}"
+       api_key: "{{ api_chat_token }}"
        attachments:
          - text: "-- Information --"
            color: '#37a3a3'
