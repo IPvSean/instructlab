@@ -38,7 +38,6 @@
         extra_vars:
           gpt_prompt: "We have an issue on our RHEL Linux server.  Here is the output: {{ httpd_log_output }}"
           max_tokens: "My Second Variable"
-        job_type: run
         controller_host: aap-nostromo.demoredhat.com
         controller_username: sean
         controller_password: "{{ sean_password }}"
