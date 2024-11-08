@@ -14,8 +14,7 @@
           register: port_check
           until: port_check is not failed
 
-    - rescue:
-
+      rescue:
         - name: Activate virtual environment and run model serve in background
           ansible.builtin.shell: |
             nohup /home/ec2-user/instructlab/venv/bin/ilab model serve --model-path /home/ec2-user/instructlab/models/granite-7b-lab-Q4_K_M.gguf --api-key {{ api_token | default('ansible123!') }} > /tmp/ilab_model_serve.log 2>&1 &
