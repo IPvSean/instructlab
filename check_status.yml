@@ -1,0 +1,41 @@
+---
+- hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: Check if httpd is running
+      check_mode: true
+      ansible.builtin.systemd_service:
+        state: started
+        name: httpd
+      register: service_status
+
+    # - name: Check if httpd is running
+    #   ansible.builtin.debug:
+    #     msg: "{{ service_status }}"
+
+    - name: Check if httpd is running
+      ansible.builtin.debug:
+        msg: "{{ service_status.status.ActiveState if service_status.status.ActiveState is defined else 'ActiveState not found' }}"
+
+    - name: Retrieve last 50 lines of httpd logs
+      ansible.builtin.command: journalctl -u httpd.service -n 50
+      register: httpd_logs
+      ignore_errors: true
+      when: service_status.changed
+
+    - name: Store httpd logs as a variable
+      ansible.builtin.set_fact:
+        httpd_log_output: "{{ httpd_logs.stdout }}"
+
+    - name: Display httpd logs
+      ansible.builtin.debug:
+        msg: "{{ httpd_log_output }}"
+
+    - name: Launch a job template with extra_vars on remote controller instance
+      ansible.controller.job_launch:
+        job_template: "InstructLab - Talk to Granite Survey and Chat
+        extra_vars:
+          gpt_prompt: "We have an issue on our RHEL Linux server.  Here is the output: {{ httpd_log_output }}"
+          max_tokens: "My Second Variable"
+        job_type: run
