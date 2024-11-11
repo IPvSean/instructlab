@@ -47,4 +47,4 @@
               - title: InstructLab AI provided information
                 value: "{{ response.json.choices[0].text if response.json is defined and response.json.choices is defined else 'Text not found' }}"
                 short: true
-       delegate_to: localhost
+      delegate_to: localhost
