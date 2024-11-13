@@ -1,0 +1,14 @@
+-   name: Remove line that contains InvalidDirectiveHere from /etc/httpd/conf/httpd.conf
+        and restart httpd
+    hosts: all
+    become: true
+    tasks:
+    -   name: Remove line that contains InvalidDirectiveHere from /etc/httpd/conf/httpd.conf
+        ansible.builtin.lineinfile:
+            path: /etc/httpd/conf/httpd.conf
+            regexp: ^InvalidDirectiveHere
+            state: absent
+    -   name: Restart httpd
+        ansible.builtin.service:
+            name: httpd
+            state: restarted
