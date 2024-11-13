@@ -36,7 +36,7 @@
       ansible.controller.job_launch:
         job_template: "InstructLab - Talk to Granite Survey and Chat"
         extra_vars:
-          gpt_prompt: "\n\n### Instructions:\nWe have an issue on our RHEL Linux server with the Apache service. Please help me troubleshoot this issue.  In addition to any response you have label a 1-sentence prompt with LIGHTSPEED PROMPT and give me the sentence of directions for me to fix the issue and get the service back online.. Here are recent error logs: {{ httpd_log_output }} \n\n### Response:\n"
+          gpt_prompt: "\n\n### Instructions:\nWe have an issue on our RHEL Linux server with the Apache service. Please help me troubleshoot this issue. Here are recent error logs: {{ httpd_log_output }} \n\n### Response:\n"
           max_tokens: 2000
         controller_host: aap-nostromo.demoredhat.com
         controller_username: sean
