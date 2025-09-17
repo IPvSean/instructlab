@@ -18,7 +18,7 @@
       ansible.builtin.debug:
         msg: "{{ service_status.status.ActiveState if service_status.status.ActiveState is defined else 'ActiveState not found' }}"
 
-    - name: Retrieve last 50 lines of httpd logs
+    - name: Retrieve last 20 lines of httpd logs
       ansible.builtin.command: journalctl -u httpd.service -n 20
       register: httpd_logs
       ignore_errors: true

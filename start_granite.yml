@@ -2,6 +2,8 @@
 - name: Setup and run model serve in the background
   hosts: instructlab-g6
   gather_facts: false
+  vars:
+    instruct_model: "/home/ec2-user/instructlab/models/granite-7b-lab-Q4_K_M.gguf"
   tasks:
     - name: Check if InstructLab is already running
       block:
@@ -16,7 +18,7 @@
       rescue:
         - name: Activate virtual environment and run model serve in background
           ansible.builtin.shell: |
-            nohup /home/ec2-user/instructlab/venv/bin/ilab model serve --model-path /home/ec2-user/instructlab/models/granite-7b-lab-Q4_K_M.gguf --api-key {{ api_token | default('ansible123!') }} > /tmp/ilab_model_serve.log 2>&1 &
+            nohup /home/ec2-user/instructlab/venv/bin/ilab model serve --model-path {{ instruct_model }} --api-key {{ api_token | default('ansible123!') }} > /tmp/ilab_model_serve.log 2>&1 &
           async: 5
           poll: 0
           register: model_serve_command
