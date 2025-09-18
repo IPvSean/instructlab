@@ -14,7 +14,7 @@
         body:
           prompt: "{{ gpt_prompt | default('What is the capital of the USA?') }}"
           max_tokens: "{{ max_tokens | default('500') }}"
-          model: "string"
+          model: "/var/home/cloud-user/.cache/instructlab/models/RedHatAI/granite-3.3-8b-instruct"
         body_format: json
         return_content: true
         status_code: 200
