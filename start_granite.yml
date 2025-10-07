@@ -3,7 +3,7 @@
   hosts: instructlab-g6
   gather_facts: false
   vars:
-    instruct_model: "/home/ec2-user/instructlab/models/granite-7b-lab-Q4_K_M.gguf"
+    instruct_model: "/home/ec2-user/.cache/instructlab/models/granite-7b-lab-Q4_K_M.gguf"
   tasks:
     - name: Check if InstructLab is already running
       block:

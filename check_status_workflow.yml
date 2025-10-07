@@ -7,7 +7,7 @@
       check_mode: true
       ansible.builtin.systemd_service:
         state: started
-        name: "{{ linux_service | default("httpd") }}"
+        name: "{{ linux_service | default('httpd') }}"
       register: service_status
 
     - name: Check if httpd is running
