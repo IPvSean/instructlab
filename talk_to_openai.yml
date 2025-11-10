@@ -2,7 +2,7 @@
 - name: Make API Call to ChatGPT/LLM
   hosts: localhost
   vars:
-    _url_: "http://{{ redhat_ai_server | default('98.80.168.118') }}:8000/v1/completions"
+    _url_: "http://{{ redhat_ai_server | default('98.80.168.118') }}:8000/v1/chat/completions"
     api_key:
     gpt_model: "gpt-3.5-turbo-instruct"
     gpt_prompt: "What is the capital of North Carolina?"
@@ -20,14 +20,16 @@
          Authorization: Bearer {{ api_key }}
         body_format: json
         body:
-          # model: "{{ gpt_model }}"
-          prompt: "{{ gpt_prompt }}"
+          model: "{{ redhat_ai_model | default('/var/home/cloud-user/.cache/instructlab/models/RedHatAI/granite-3.3-8b-instruct') }}"
+          messages:
+            - role: "user"
+              content: "{{ gpt_prompt }}"
           max_tokens: 200  # Adjust the max_tokens as needed
       register: api_response
 
     - name: Extract text from API response
       set_fact:
-        response_text: "{{ api_response.json.choices[0].text }}"
+        response_text: "{{ api_response.json.choices[0].message.content }}"
 
     - name: Display extracted text
       debug:

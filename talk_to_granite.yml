@@ -5,20 +5,18 @@
   tasks:
     - name: Send POST request using uri module
       ansible.builtin.uri:
-        url: "http://{{ redhat_ai_server | default('98.80.168.118') }}:8000/v1/completions"
+        url: "http://{{ redhat_ai_server | default('98.80.168.118') }}:8000/v1/chat/completions"
         method: POST
         headers:
           accept: "application/json"
           Content-Type: "application/json"
           Authorization: "Bearer {{ api_token | default('ansible123!') }}"
-        body: >
-          {
-            "prompt": "\n\n### Instructions:\nWhat is the capital of USA?\n\n### Response:\n",
-            "stop": [
-              "\n",
-              "###"
-            ]
-          }
+        body:
+          model: "{{ redhat_ai_model | default('/var/home/cloud-user/.cache/instructlab/models/RedHatAI/granite-3.3-8b-instruct') }}"
+          messages:
+            - role: "user"
+              content: "{{ gpt_prompt | default('What is the capital of the USA?') }}"
+          max_tokens: "{{ max_tokens | default('200') }}"
         body_format: json
         return_content: true
         status_code: 200

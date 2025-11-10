@@ -5,16 +5,18 @@
   tasks:
     - name: Send POST request using uri module
       ansible.builtin.uri:
-        url: "http://{{ redhat_ai_server | default('98.80.168.118') }}:8000/v1/completions"
+        url: "http://{{ redhat_ai_server | default('98.80.168.118') }}:8000/v1/chat/completions"
         method: POST
         headers:
           accept: "application/json"
           Content-Type: "application/json"
           Authorization: "Bearer {{ api_token | default('ansible123!') }}"
         body:
-          prompt: "{{ gpt_prompt | default('What is the capital of the USA?') }}"
+          model: "{{ redhat_ai_model | default('/var/home/cloud-user/.cache/instructlab/models/RedHatAI/granite-3.3-8b-instruct') }}"
+          messages:
+            - role: "user"
+              content: "{{ gpt_prompt | default('What is the capital of the USA?') }}"
           max_tokens: "{{ max_tokens | default('500') }}"
-          model: "/var/home/cloud-user/.cache/instructlab/models/RedHatAI/granite-3.3-8b-instruct"
         body_format: json
         return_content: true
         status_code: 200
@@ -31,7 +33,7 @@
 
     - name: Check if response is JSON and retrieve text
       ansible.builtin.debug:
-        msg: "{{ response.json.choices[0].text if response.json is defined and response.json.choices is defined else 'Text not found' }}"
+        msg: "{{ response.json.choices[0].message.content if response.json is defined and response.json.choices is defined else 'Text not found' }}"
 
     - name: Send notification message via Mattermost
       community.general.mattermost:
@@ -46,6 +48,6 @@
                 value: "{{ gpt_prompt | default('What is the capital of the USA?') }}"
                 short: true
               - title: InstructLab AI provided information
-                value: "{{ response.json.choices[0].text if response.json is defined and response.json.choices is defined else 'Text not found' }}"
+                value: "{{ response.json.choices[0].message.content if response.json is defined and response.json.choices is defined else 'Text not found' }}"
                 short: true
       delegate_to: localhost
