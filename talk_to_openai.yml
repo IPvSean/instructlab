@@ -2,7 +2,7 @@
 - name: Make API Call to ChatGPT/LLM
   hosts: localhost
   vars:
-    _url_: http://98.80.168.118:8000/v1/completions
+    _url_: "http://{{ redhat_ai_server | default('98.80.168.118') }}:8000/v1/completions"
     api_key:
     gpt_model: "gpt-3.5-turbo-instruct"
     gpt_prompt: "What is the capital of North Carolina?"
