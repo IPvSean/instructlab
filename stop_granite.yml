@@ -1,5 +1,5 @@
 ---
-- name: Setup and run model serve in the background
+- name: Stop model serve running in the background
   hosts: instructlab-g6
   gather_facts: false
   tasks:
@@ -13,20 +13,20 @@
             timeout: 5
           register: port_check
       rescue:
-        - name: Check for instructlab process
-          ansible.builtin.shell: "pgrep -f instructlab"
-          register: instructlab_pid
+        - name: Check for ilab process
+          ansible.builtin.shell: "pgrep -f 'ilab model serve'"
+          register: ilab_pid
           ignore_errors: true
 
-        - name: Kill instructlab process
-          ansible.builtin.shell: "kill -9 {{ instructlab_pid.stdout }}"
-          when: instructlab_pid.stdout is defined and instructlab_pid.stdout != ""
+        - name: Kill ilab process
+          ansible.builtin.shell: "kill -9 {{ ilab_pid.stdout }}"
+          when: ilab_pid.stdout is defined and ilab_pid.stdout != ""
           ignore_errors: true
           register: kill_result
 
         - name: Display result
           ansible.builtin.debug:
-            msg: "Process 'instructlab' {{ 'was killed' if kill_result is succeeded else 'not found or could not be killed' }}"
+            msg: "Process 'ilab model serve' {{ 'was killed' if kill_result is succeeded else 'not found or could not be killed' }}"
 
         - name: Check if something is listening on port 8000 for TCP
           ansible.builtin.wait_for:
@@ -36,7 +36,7 @@
             timeout: 5
           register: port_check
 
-        - name: Confirm that model serve started successfully
+        - name: Confirm that model serve stopped successfully
           ansible.builtin.debug:
-            msg: "instructlab stopped successfully, nothing is listening on port 8000"
+            msg: "ilab model serve stopped successfully, nothing is listening on port 8000"
           when: port_check is succeeded
