@@ -5,7 +5,7 @@
   tasks:
     - name: Send POST request using uri module
       ansible.builtin.uri:
-        url: "http://{{ redhat_ai_server | default('98.80.168.118') }}:8000/v1/chat/completions"
+        url: "http://{{ redhat_ai_server | default('44.217.99.170') }}:8000/v1/chat/completions"
         method: POST
         headers:
           accept: "application/json"
