@@ -1,0 +1,22 @@
+---
+- name: Break Apache httpd
+  hosts: rhel01-nostromo.demoredhat.com
+  become: true
+  tasks:
+    - name: Add InvalidDirectiveHere
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        insertafter: '^ServerRoot'
+        line: 'InvalidDirectiveHere'
+        state: present
+
+    - name: Restart apache (expect failure due to broken config)
+      service:
+        name: httpd
+        state: restarted
+      register: restart_result
+      failed_when: restart_result is succeeded
+
+    - name: Verify httpd is broken
+      debug:
+        msg: "httpd is successfully broken — restart failed as expected"

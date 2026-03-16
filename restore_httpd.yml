@@ -1,0 +1,15 @@
+---
+- name: Restore Apache httpd
+  hosts: rhel01-nostromo.demoredhat.com
+  become: true
+  tasks:
+    - name: Remove InvalidDirectiveHere
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^InvalidDirectiveHere$'
+        state: absent
+
+    - name: Restart apache
+      service:
+        name: httpd
+        state: restarted
