@@ -13,3 +13,12 @@
       service:
         name: httpd
         state: restarted
+
+    - name: Get httpd status
+      command: systemctl status httpd
+      register: httpd_status
+      changed_when: false
+
+    - name: Show httpd status
+      debug:
+        var: httpd_status.stdout_lines
